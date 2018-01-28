@@ -37,3 +37,5 @@ console.log(classification);
 ### Status
 
 Zone classification is implemented. MPAs with multiple zones forthcoming.
+
+[![CircleCI](https://circleci.com/gh/mcclintock-lab/mpa-reg-based-classification.svg?style=svg)](https://circleci.com/gh/mcclintock-lab/mpa-reg-based-classification) [Unit Tests]("https://github.com/mcclintock-lab/mpa-reg-based-classification/blob/master/index.test.js")
