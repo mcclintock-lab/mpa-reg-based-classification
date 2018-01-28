@@ -1,0 +1,31 @@
+{
+  "name": "mpa-reg-based-classification",
+  "version": "1.0.0",
+  "description": "Implements a regulation-based classification system for Marine Protected Areas based on https://doi.org/10.1016/j.marpol.2016.06.021",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "jest",
+    "build": "babel src --out-dir dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mcclintock-lab/mpa-reg-based-classification.git"
+  },
+  "keywords": [
+    "mpa"
+  ],
+  "author": "Chad Burt",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mcclintock-lab/mpa-reg-based-classification/issues"
+  },
+  "homepage": "https://github.com/mcclintock-lab/mpa-reg-based-classification#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-jest": "^22.1.0",
+    "babel-preset-env": "^1.6.1",
+    "jest": "^22.1.4",
+    "regenerator-runtime": "^0.11.1"
+  }
+}
