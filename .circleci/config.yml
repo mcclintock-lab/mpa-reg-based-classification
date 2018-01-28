@@ -35,8 +35,3 @@ jobs:
 
       # run tests!
       - run: npm test
-
-notify:
-  webhooks:
-    # A list of hook hashes, containing the URL field
-    - url: https://hooks.slack.com/services/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
