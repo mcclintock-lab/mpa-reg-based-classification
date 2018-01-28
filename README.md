@@ -30,7 +30,7 @@ const classification = classifyZone(
 );
 
 console.log(classification);
->>> 5
+>>> 4
 ```
 
 
