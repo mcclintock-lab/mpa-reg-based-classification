@@ -65,18 +65,18 @@ export function classifyZone(gearTypes, aquaculture, anchoring) {
 }
 
 export function classifyMPA(zones) {
-  const scores = [];
+  const zoneScores = [];
   for (const zone of zones) {
     if (zone.length < 4) {
       throw new Error("Expected array of 4 arguments for each zone (gearTypes, aquacultureAndBottomExploitation, boating, and area");
     } else {
-      scores.push([classifyZone(zone[0], zone[1], zone[2]), zone[3]]);
+      zoneScores.push([classifyZone(zone[0], zone[1], zone[2]), zone[3]]);
     }
   }
-  const sumArea = scores.reduce((sum, score) => sum + score[1], 0);
-  const score = scores.reduce((sum, score) => sum + (score[0] * score[1] / sumArea), 0);
+  const sumArea = zoneScores.reduce((sum, score) => sum + score[1], 0);
+  const score = zoneScores.reduce((sum, score) => sum + (score[0] * score[1] / sumArea), 0);
   return {
-    scores: scores.map((s) => s[0]),
+    scores: zoneScores.map((zoneScore) => zoneScore[0]),
     index: score,
     indexLabel: getClassificationLabel(score)
   }

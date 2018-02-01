@@ -4,6 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.classifyZone = classifyZone;
+exports.classifyMPA = classifyMPA;
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
@@ -78,6 +79,52 @@ function classifyZone(gearTypes, aquaculture, anchoring) {
   }
 }
 
+function classifyMPA(zones) {
+  var zoneScores = [];
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
+
+  try {
+    for (var _iterator = zones[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var zone = _step.value;
+
+      if (zone.length < 4) {
+        throw new Error("Expected array of 4 arguments for each zone (gearTypes, aquacultureAndBottomExploitation, boating, and area");
+      } else {
+        zoneScores.push([classifyZone(zone[0], zone[1], zone[2]), zone[3]]);
+      }
+    }
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator.return) {
+        _iterator.return();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
+    }
+  }
+
+  var sumArea = zoneScores.reduce(function (sum, score) {
+    return sum + score[1];
+  }, 0);
+  var score = zoneScores.reduce(function (sum, score) {
+    return sum + score[0] * score[1] / sumArea;
+  }, 0);
+  return {
+    scores: zoneScores.map(function (zoneScore) {
+      return zoneScore[0];
+    }),
+    index: score,
+    indexLabel: getClassificationLabel(score)
+  };
+}
+
 var constants = exports.constants = require("./constants");
 
 var scores = exports.scores = {
@@ -114,3 +161,17 @@ var scores = exports.scores = {
     color: "rgb(72,46,19)"
   }
 };
+
+function getClassificationLabel(index) {
+  if (index < 3) {
+    return "Fully Protected Area";
+  } else if (index < 5) {
+    return "Highly Protected Area";
+  } else if (index < 6) {
+    return "Moderately Protected Area";
+  } else if (index < 7) {
+    "Poorly Protected Area";
+  } else {
+    "Unprotected Area";
+  }
+}
