@@ -1,5 +1,7 @@
 Javascript implementation of [A regulation-based classification system for Marine Protected Areas](https://doi.org/10.1016/j.marpol.2016.06.021).
 
+[![CircleCI](https://circleci.com/gh/mcclintock-lab/mpa-reg-based-classification.svg?style=svg)](https://circleci.com/gh/mcclintock-lab/mpa-reg-based-classification) [Unit Tests]("https://github.com/mcclintock-lab/mpa-reg-based-classification/blob/master/index.test.js")
+
 ### Installation
 
 `npm install mpa-reg-based-classification`
@@ -33,9 +35,6 @@ console.log(classification);
 >>> 4
 ```
 
+`classifyMPA([[gearTypes: [String], aquacultureActivities: String, anchoringActivities: String, area:number]])`
 
-### Status
-
-Zone classification is implemented. MPAs with multiple zones forthcoming.
-
-[![CircleCI](https://circleci.com/gh/mcclintock-lab/mpa-reg-based-classification.svg?style=svg)](https://circleci.com/gh/mcclintock-lab/mpa-reg-based-classification) [Unit Tests]("https://github.com/mcclintock-lab/mpa-reg-based-classification/blob/master/index.test.js")
+`classifyMPA` accepts an array of the same arguments as `classifyZone` for multiple zones, with the addition of an area for each zone. Unit doesn't matter.
