@@ -64,4 +64,71 @@ export function classifyZone(gearTypes, aquaculture, anchoring) {
   }
 }
 
+export function classifyMPA(zones) {
+  const scores = [];
+  for (const zone of zones) {
+    if (zone.length < 4) {
+      throw new Error("Expected array of 4 arguments for each zone (gearTypes, aquacultureAndBottomExploitation, boating, and area");
+    } else {
+      scores.push([classifyZone(zone[0], zone[1], zone[2]), zone[3]]);
+    }
+  }
+  const sumArea = scores.reduce((sum, score) => sum + score[1], 0);
+  const score = scores.reduce((sum, score) => sum + (score[0] * score[1] / sumArea), 0);
+  return {
+    scores: scores.map((s) => s[0]),
+    index: score,
+    indexLabel: getClassificationLabel(score)
+  }
+}
+
 export const constants = require("./constants");
+
+export const scores = {
+  1: {
+    label: "No-take/No-go",
+    color: "rgb(78, 142, 135)"
+  },
+  2: {
+    label: "No-take/Regulated access",
+    color: "rgb(147,181,54)"
+  },
+  3: {
+    label: "No-take/Unregulated access",
+    color: "rgb(235,204,53)"
+  },
+  4: {
+    label: "Highly regulated extraction",
+    color: "rgb(203,131,44)"
+  },
+  5: {
+    label: "Moderately regulated extraction",
+    color: "rgb(176,33,97)"
+  },
+  6: {
+    label: "Weakly regulated extraction",
+    color: "rgb(115,25,74)"
+  },
+  7: {
+    label: "Very weakly regulated extraction",
+    color: "rgb(68,25,105)"
+  },
+  8: {
+    label: "Unregulated extraction",
+    color: "rgb(72,46,19)"
+  }
+}
+
+function getClassificationLabel(index) {
+  if (index < 3) {
+    return "Fully Protected Area";
+  } else if (index < 5) {
+    return "Highly Protected Area";
+  } else if (index < 6) {
+    return "Moderately Protected Area";
+  } else if (index < 7) {
+    "Poorly Protected Area";
+  } else {
+    "Unprotected Area";
+  }
+}

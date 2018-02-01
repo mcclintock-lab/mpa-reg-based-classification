@@ -79,3 +79,38 @@ function classifyZone(gearTypes, aquaculture, anchoring) {
 }
 
 var constants = exports.constants = require("./constants");
+
+var scores = exports.scores = {
+  1: {
+    label: "No-take/No-go",
+    color: "rgb(78, 142, 135)"
+  },
+  2: {
+    label: "No-take/Regulated access",
+    color: "rgb(147,181,54)"
+  },
+  3: {
+    label: "No-take/Unregulated access",
+    color: "rgb(235,204,53)"
+  },
+  4: {
+    label: "Highly regulated extraction",
+    color: "rgb(203,131,44)"
+  },
+  5: {
+    label: "Moderately regulated extraction",
+    color: "rgb(176,33,97)"
+  },
+  6: {
+    label: "Weakly regulated extraction",
+    color: "rgb(115,25,74)"
+  },
+  7: {
+    label: "Very weakly regulated extraction",
+    color: "rgb(68,25,105)"
+  },
+  8: {
+    label: "Unregulated extraction",
+    color: "rgb(72,46,19)"
+  }
+};
