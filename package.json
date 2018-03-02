@@ -1,6 +1,6 @@
 {
   "name": "mpa-reg-based-classification",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Implements a regulation-based classification system for Marine Protected Areas based on https://doi.org/10.1016/j.marpol.2016.06.021",
   "main": "dist/index.js",
   "scripts": {
