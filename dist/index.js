@@ -170,8 +170,8 @@ function getClassificationLabel(index) {
   } else if (index < 6) {
     return "Moderately Protected Area";
   } else if (index < 7) {
-    "Poorly Protected Area";
+    return "Poorly Protected Area";
   } else {
-    "Unprotected Area";
+    return "Unprotected Area";
   }
 }
